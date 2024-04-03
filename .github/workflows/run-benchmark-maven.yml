@@ -1,0 +1,38 @@
+name: Run benchmark with Maven
+on:
+  pull_request:
+  merge_group:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Java setup
+      uses: actions/setup-java@v4
+      with:
+        java-version: 17
+
+    - name: Cache
+      uses: actions/cache@v4
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+
+    - name: Run Maven
+      run: mvn -B clean verify
+
+    - name: Run Benchmark
+      run: java -jar target/benchmarks.jar
+
+#    - name: Commit benchmark results
+#      run: |
+#          git config --global user.name 'Your Name'
+#          git config --global user.email 'your-username@users.noreply.github.com'
+#          git commit -am "docs: Publish benchmark results"
+#          git push
