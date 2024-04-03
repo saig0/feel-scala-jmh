@@ -26,7 +26,7 @@
 package org.camunda
 
 import org.camunda.EvaluationBenchmark._
-import org.camunda.feel.FeelEngine
+import org.camunda.feel.api.FeelEngineBuilder
 import org.camunda.feel.syntaxtree.ParsedExpression
 import org.openjdk.jmh.annotations._
 
@@ -42,32 +42,32 @@ class EvaluationBenchmark {
 
   @Benchmark
   def comparisonNumber(): Any = {
-    engine.eval(
-      exp = expressionComparisonNumber,
+    engine.evaluate(
+      expression = expressionComparisonNumber,
       variables = Map("x" -> 21)
     )
   }
 
   @Benchmark
   def intervalNumbers(): Any = {
-    engine.eval(
-      exp = expressionIntervalNumbers,
+    engine.evaluate(
+      expression = expressionIntervalNumbers,
       variables = Map("x" -> 21)
     )
   }
 
   @Benchmark
   def intervalDateAndTime(): Any = {
-    engine.eval(
-      exp = expressionIntervalDateAndTime,
+    engine.evaluate(
+      expression = expressionIntervalDateAndTime,
       variables = Map("x" -> LocalDateTime.parse("2021-04-01T00:00:00"))
     )
   }
 
   @Benchmark
   def pathExpression(): Any = {
-    engine.eval(
-      exp = expressionPath,
+    engine.evaluate(
+      expression = expressionPath,
       variables = Map("order" ->
         Map("tracking" ->
           Map("id" -> "order-123")
@@ -78,8 +78,8 @@ class EvaluationBenchmark {
 
   @Benchmark
   def filterExpression(): Any = {
-    engine.eval(
-      exp = expressionFilter,
+    engine.evaluate(
+      expression = expressionFilter,
       variables = Map("order" ->
         List(
           Map("type" -> "priority")
@@ -90,24 +90,24 @@ class EvaluationBenchmark {
 
   @Benchmark
   def listIndexAccess(): Any = {
-    engine.eval(
-      exp = expressionListIndexAccess,
+    engine.evaluate(
+      expression = expressionListIndexAccess,
       variables = Map[String, Any]()
     )
   }
 
   @Benchmark
   def contextProjection(): Any = {
-    engine.eval(
-      exp = expressionContextProjection,
+    engine.evaluate(
+      expression = expressionContextProjection,
       variables = Map[String, Any]()
     )
   }
 
   @Benchmark
   def forExpression(): Any = {
-    engine.eval(
-      exp = expressionFor,
+    engine.evaluate(
+      expression = expressionFor,
       variables = Map("orders" ->
         List(
           Map("id" -> "order-123")
@@ -118,24 +118,24 @@ class EvaluationBenchmark {
 
   @Benchmark
   def contextLiteral(): Any = {
-    engine.eval(
-      exp = expressionContextLiteral,
+    engine.evaluate(
+      expression = expressionContextLiteral,
       variables = Map[String, Any]()
     )
   }
 
   @Benchmark
   def listLiteral(): Any = {
-    engine.eval(
-      exp = expressionListLiteral,
+    engine.evaluate(
+      expression = expressionListLiteral,
       variables = Map[String, Any]()
     )
   }
 
   @Benchmark
   def functionInvocation(): Any = {
-    engine.eval(
-      exp = expressionFunctionInvocation,
+    engine.evaluate(
+      expression = expressionFunctionInvocation,
       variables = Map("x" -> "Hello camunda")
     )
   }
@@ -145,7 +145,7 @@ class EvaluationBenchmark {
 object EvaluationBenchmark {
 
   @State(Scope.Benchmark)
-  private val engine = new FeelEngine()
+  private val engine = FeelEngineBuilder().build()
 
   @State(Scope.Benchmark)
   private val expressionComparisonNumber = parseExpression("x = 21")
@@ -180,9 +180,6 @@ object EvaluationBenchmark {
   @State(Scope.Benchmark)
   private val expressionFunctionInvocation = parseExpression("""contains(x, "camunda")""")
 
-  private def parseExpression(expression: String): ParsedExpression = engine.parseExpression(expression) match {
-    case Right(result) => result
-    case Left(failure) => throw new RuntimeException(s"Failed to parse expression: ${failure.message}")
-  }
+  private def parseExpression(expression: String): ParsedExpression = engine.parseExpression(expression).parsedExpression
 
 }

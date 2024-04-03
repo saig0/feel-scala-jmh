@@ -26,9 +26,8 @@
 package org.camunda
 
 import java.util.concurrent.TimeUnit
-
 import org.camunda.ParserBenchmark.engine
-import org.camunda.feel.FeelEngine
+import org.camunda.feel.api.FeelEngineBuilder
 import org.openjdk.jmh.annotations.{Benchmark, BenchmarkMode, Fork, Measurement, Mode, OutputTimeUnit, Scope, State, Threads, Warmup}
 
 @BenchmarkMode(Array(Mode.Throughput))
@@ -98,6 +97,6 @@ class ParserBenchmark {
 object ParserBenchmark {
 
   @State(Scope.Benchmark)
-  private val engine = new FeelEngine()
+  private val engine = FeelEngineBuilder().build()
 
 }
