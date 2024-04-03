@@ -49,7 +49,7 @@
         <javac.target>1.8</javac.target>
         <uberjar.name>benchmarks</uberjar.name>
 
-        <scala.version>2.13.12</scala.version>
+        <scala.version>2.13.13</scala.version>
         <scala.binary.version>2.13.12</scala.binary.version>
     </properties>
 
