@@ -1,0 +1,12 @@
+Benchmark                             Mode  Cnt   Score   Error   Units
+ParserBenchmark.comparisonNumber     thrpt   10  37.676 ± 0.606  ops/ms
+ParserBenchmark.contextLiteral       thrpt   10  14.012 ± 0.122  ops/ms
+ParserBenchmark.contextProjection    thrpt   10  12.803 ± 1.312  ops/ms
+ParserBenchmark.filterExpression     thrpt   10  22.054 ± 0.206  ops/ms
+ParserBenchmark.forExpression        thrpt   10  17.039 ± 0.342  ops/ms
+ParserBenchmark.functionInvocation   thrpt   10  23.050 ± 0.553  ops/ms
+ParserBenchmark.intervalDateAndTime  thrpt   10  21.026 ± 0.342  ops/ms
+ParserBenchmark.intervalNumbers      thrpt   10  24.090 ± 0.230  ops/ms
+ParserBenchmark.listIndexAccess      thrpt   10  14.437 ± 0.089  ops/ms
+ParserBenchmark.listLiteral          thrpt   10  19.368 ± 0.197  ops/ms
+ParserBenchmark.pathExpression       thrpt   10  41.284 ± 0.333  ops/ms
