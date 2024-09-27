@@ -33,7 +33,7 @@
         <dependency>
             <groupId>org.camunda.feel</groupId>
             <artifactId>feel-engine</artifactId>
-            <version>1.18.0</version>
+            <version>1.18.1</version>
         </dependency>
 
     </dependencies>
