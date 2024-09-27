@@ -1,0 +1,23 @@
+Benchmark                                 Mode  Cnt    Score   Error   Units
+EvaluationBenchmark.comparisonNumber     thrpt   10   32.542 ± 0.151  ops/ms
+EvaluationBenchmark.contextLiteral       thrpt   10   27.599 ± 0.200  ops/ms
+EvaluationBenchmark.contextProjection    thrpt   10   28.347 ± 0.197  ops/ms
+EvaluationBenchmark.filterExpression     thrpt   10   29.625 ± 0.224  ops/ms
+EvaluationBenchmark.forExpression        thrpt   10   29.677 ± 0.225  ops/ms
+EvaluationBenchmark.functionInvocation   thrpt   10   32.351 ± 0.247  ops/ms
+EvaluationBenchmark.intervalDateAndTime  thrpt   10   28.115 ± 0.142  ops/ms
+EvaluationBenchmark.intervalNumbers      thrpt   10   33.031 ± 0.191  ops/ms
+EvaluationBenchmark.listIndexAccess      thrpt   10   30.376 ± 0.589  ops/ms
+EvaluationBenchmark.listLiteral          thrpt   10   29.018 ± 0.236  ops/ms
+EvaluationBenchmark.pathExpression       thrpt   10   31.104 ± 0.182  ops/ms
+ParserBenchmark.comparisonNumber         thrpt   10  561.921 ± 1.296  ops/ms
+ParserBenchmark.contextLiteral           thrpt   10  262.316 ± 3.971  ops/ms
+ParserBenchmark.contextProjection        thrpt   10  239.677 ± 0.612  ops/ms
+ParserBenchmark.filterExpression         thrpt   10  196.475 ± 0.521  ops/ms
+ParserBenchmark.forExpression            thrpt   10  430.762 ± 1.584  ops/ms
+ParserBenchmark.functionInvocation       thrpt   10  190.870 ± 0.638  ops/ms
+ParserBenchmark.intervalDateAndTime      thrpt   10  171.169 ± 1.525  ops/ms
+ParserBenchmark.intervalNumbers          thrpt   10  392.604 ± 5.643  ops/ms
+ParserBenchmark.listIndexAccess          thrpt   10  224.182 ± 3.035  ops/ms
+ParserBenchmark.listLiteral              thrpt   10  299.057 ± 1.238  ops/ms
+ParserBenchmark.pathExpression           thrpt   10  749.931 ± 4.615  ops/ms
